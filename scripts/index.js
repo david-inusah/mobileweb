@@ -1,37 +1,54 @@
 ﻿(function() {
 
-	document.addEventListener('deviceready', onDeviceReady.bind(this), false);
-	var pictureSource;
-	var destinationType;
-	function onDeviceReady() {
-		pictureSource = navigator.camera.PictureSourceType;
-		destinationType = navigator.camera.DestinationType;
+    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+    var pictureSource;
+    var destinationType;
 
-		document.getElementById("capturePhoto").onclick = function() {
-			navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-				quality : 50,
+    function onDeviceReady() {
+        pictureSource = navigator.camera.PictureSourceType;
+        destinationType = navigator.camera.DestinationType;
 
-				destinationType : destinationType.DATA_URL
-			});
-		}
-		  
-		  
-	
-	};
-	function onPhotoDataSuccess(imageData) {
+        document.getElementById("capturePhoto").onclick = function() {
+            navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+                quality: 50,
 
-		var smallImage = document.getElementById('smallImage');
+                destinationType: destinationType.DATA_URL
+            });
+        }
+        document.getElementById("geolocator").onclick = function() {
+            navigator.geolocation.getCurrentPosition { onSuccess, onError, enableHighAccuracy: true }
+        }
+    };
 
-		smallImage.style.display = 'block';
+    function onSuccess(position) {
 
-		smallImage.src = "data:image/jpeg;base64," + imageData;
+        alert(
+            'Latitude: ' + position.coords.latitude + '\n' +
+            'Longitude: ' + position.coords.longitude + '\n' +
+        );
+    }
 
-	}
+    function onError(error) {
+        alert(
+            'code: ' + error.code + '\n' +
+            'message: ' + error.message + '\n' +
+        );
+    }
 
-	function onFail(message) {
+    function onPhotoDataSuccess(imageData) {
 
-		alert('Failed because: ' + message);
+        var smallImage = document.getElementById('smallImage');
 
-	}
+        smallImage.style.display = 'block';
+
+        smallImage.src = "data:image/jpeg;base64," + imageData;
+
+    }
+
+    function onFail(message) {
+
+        alert('Failed because: ' + message);
+
+    }
 
 })();
