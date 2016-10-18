@@ -7,341 +7,65 @@
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
 		<!-- Path to your custom app styles-->
-		<style type="text/css">
-			img {
-				position: relative;
-				left: 50%;
-				max-width: 50%;
-				max-height: 50%;
+		<link rel="stylesheet"  href="css/jquery.mobile.structure.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.theme.css" />
+         <script>
+			var userAgent = navigator.userAgent + '';
+			if (userAgent.indexOf('iPhone') > -1) {
+				document.write('<script src="js/lib/cordova-iphone.js"></sc' + 'ript>');
+				var mobile_system = 'iphone';
+			} else if (userAgent.indexOf('Android') > -1) {
+				document.write('<script src="js/lib/cordova-android.js"></sc' + 'ript>');
+				var mobile_system = 'android';
+			} else {
+				var mobile_system = '';
 			}
-		</style>
+		</script>
 
-		<title>E Result</title>
+		<script src="scripts/jquery.js"></script>
+		<!-- your scripts here -->
+		
+		<script src="scripts/jquery.mobile.js"></script>
+		<title>app</title>
 	</head>
 	<body>
-		<div class="view">
-			<div class="view view-main">
-				<div class="pages navbar-fixed toolbar-fixed">
-					<div class="page" data-page="index">
+	   <div data-role="page" id="landingPage" style="background: white">
 
-						<div class="page-content">
-							<frameset rows="70%,30%">
+			<div data-role="header" style="text-shadow: none">
+				<h1>tutorial</h1>
+				<a href="index.html" data-role="button" data-icon="refresh" data-iconpos="notext" style="background: white;border: none;">Refresh</a>
+			</div><!-- /header -->
+			<img src="img/download.png" />
+			<div data-role="content" style="text-shadow: none">
+				<a href="#declareRegions" data-transition="flip">
+				<button>
+					Declare
+				</button> </a>
+				<br />
+				<a href="#results" data-transition="slide">
+				<button>
+					Results
+				</button> </a>
+				<br />
+				<button id="capturePhoto">CAMERA</button>
+                  <div><center><img class="lazy" style="display:none;width:100%;height:100%;" id="smallImage" src="" /></center></div>
+				  
+				  <video width="400" controls>
+                      <source src="video.mp4" type="video/mp4">
+                      
+  
+                 </video>
+				 <audio controls>
+                        
+                        <source src="audio.mp3" type="audio/mpeg">
 
-								<div>
-									<img src="download.png">
-								</div>
+                  </audio>
+				 
+			</div><!-- /content -->
+		</div><!-- /page -->
 
-								<div class="card bg-red">
-									<div class="list-block">
-										<ul>
-											<li class="color-white">
-												<a href="#schedule" class="button declare color-white">Declare</a>
-											</li>
-
-										</ul>
-									</div>
-								</div>
-
-								<div class="card bg-green">
-									<div class="list-block">
-										<ul>
-											<li class="color-white">
-												<a href="#result" class="button result color-white">results</a>
-											</li>
-
-										</ul>
-									</div>
-								</div>
-
-								<div class="card bg-green">
-									<div class="list-block">
-										<ul>
-											<li class="color-white">
-												<a href="#camera" id="capturePhoto" class="button result color-white">camera</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<br />
-								<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-
-								<img style="display:none;" id="largeImage" src="" />
-							</frameset>
-						</div>
-
-						<!-- place page -->
-						<div class="view another-view" id="secondpage">
-							<!-- Pages -->
-							<div class="pages">
-								<div class="page cached" data-page="regions">
-									<div class="navbar">
-										<div class="navbar-inner">
-											<div class="left" id="back">
-												<a href="#index" class="link icon-only"> <i class="icon icon-back"></i> </a>
-											</div>
-											<div class="center">
-												E-Result HUB
-											</div>
-											<div class="right">
-												<i></i>
-											</div>
-
-										</div>
-
-									</div>
-
-									<div class="page-content">
-
-										<p class="buttons-row">
-											<a href="#" class="button submit button-big button-fill button-raised color-orange">Greater Accra</a>
-											<a href="#" class="button submit button-big button-fill button-raised color-bluegray">Easthern</a>
-										</p>
-										<p class="buttons-row">
-											<a href="#" class="button  submit button-big button-fill button-raised color-red">Westhern</a>
-											<a href="#" class="button  submit button-big button-fill button-raised color-orange">Northern</a>
-										</p>
-										<p class="buttons-row">
-											<a href="#" class="button submit button-big button-fill button-raised color-purple">Brong Ahafo</a>
-											<a href="#" class="button  submit button-big button-fill button-raised color-pink">Volta</a>
-										</p>
-										<p class="buttons-row">
-											<a href="#" class="button  submit button-big button-fill button-raised color-lime">Central</a>
-											<a href="#" class="button submit button-big button-fill button-raised color-indigo">Ashanti</a>
-										</p>
-										<p class="buttons-row">
-											<a href="#" class="button submit button-big button-fill button-raised color-green">Upper East</a>
-											<a href="#" class="button  submit button-big button-fill button-raised color-teal">Upper West</a>
-										</p>
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-
-						<!-- Submit result Page -->
-						<div class="view another-view" id="thirdpage">
-							<!-- Pages -->
-							<div class="pages">
-								<div class="page cached" data-page="submit">
-									<div class="navbar">
-										<div class="navbar-inner">
-											<div class="left">
-												<a href="" class="back"> <i class="icon icon-back"></i> </a>
-											</div>
-											<div class="center">
-												E-Result HUB
-											</div>
-											<div class="right">
-												<i></i>
-											</div>
-
-										</div>
-
-									</div>
-
-									<div class="page-content ">
-
-										<div class="page-content login-screen-content">
-
-											<form id="my-form">
-												<div class="list-block inputs-list">
-
-													<ul>
-														<li class="item-content">
-															<div class="item-inner">
-																<a href="#" class="item-link smart-select" data-page-title="Constituency" data-open-in="popup" data-back-on-select="true">
-																<select name="Constituency">
-																	<option value="apple" selected>Constituency A</option>
-																	<option value="pineapple">Constituency B</option>
-																	<option value="pineapple">Constituency C</option>
-																	<option value="pineapple">Constituency D</option>
-																	<option value="pineapple">Constituency E</option>
-																	<option value="pineapple">Constituency F</option>
-																	<option value="pineapple">Constituency G</option>
-																</select>
-																<div class="item-content">
-																	<div class="item-inner">
-																		<!-- Select label -->
-																		<div class="item-title">
-																			Constituency
-																		</div>
-
-																	</div>
-																</div> </a>
-															</div>
-														</li>
-														<li class="item-content">
-															<div class="item-inner">
-																<a href="#" class="item-link smart-select"  data-page-title="Available Pollen Station" data-open-in="popup" data-back-on-select="true">
-																<select name="Pollen Station">
-																	<option value="apple" selected>Pollen Station A</option>
-																	<option value="pineapple">Pollen Station B</option>
-																	<option value="pineapple">Pollen Station C</option>
-																	<option value="pineapple">Pollen Station D</option>
-																	<option value="pineapple">Pollen Station E</option>
-																	<option value="pineapple">Pollen Station F</option>
-																	<option value="pineapple">Pollen Station G</option>
-																</select>
-																<div class="item-content">
-																	<div class="item-inner">
-																		<!-- Select label -->
-																		<div class="item-title">
-																			Pollen Station
-																		</div>
-
-																	</div>
-																</div> </a>
-															</div>
-														</li>
-														<li class="item-content">
-															<div class="item-inner">
-																<div class="item-title label">
-																	QWD
-																</div>
-																<div class="item-input">
-																	<input type="text" name="QWD" placeholder="Enter Score" />
-																</div>
-															</div>
-														</li>
-														<li class="item-content">
-															<div class="item-inner">
-																<div class="item-title label">
-																	GPD
-																</div>
-																<div class="item-input">
-																	<input type="text" name="GPD" placeholder="Enter Score" />
-																</div>
-															</div>
-														</li>
-														<li class="item-content">
-															<div class="item-inner">
-																<div class="item-title label">
-																	TPD
-																</div>
-																<div class="item-input">
-																	<input type="text" name="TPD" placeholder="Enter Score" />
-																</div>
-															</div>
-														</li>
-														<li class="item-content">
-															<div class="item-inner">
-																<div class="item-title label">
-																	HGS
-																</div>
-																<div class="item-input">
-																	<input type="text" name="HGS" placeholder="Enter Score" />
-																</div>
-															</div>
-														</li>
-													</ul>
-												</div>
-												<div class="button-raised">
-													<p class="buttons-row">
-														<a href="#" class="button post button-big button-fill button-raised color-green">Submit</a>
-
-													</p>
-
-												</div>
-											</form>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="view another-view" id="fouthpage">
-							<!-- Pages -->
-							<div class="pages">
-								<div class="page cached" data-page="result">
-									<div class="navbar">
-										<div class="navbar-inner">
-											<div class="left">
-												<a href="" class="back"> <i class="icon icon-back"></i> </a>
-											</div>
-											<div class="center">
-												E-Result HUB
-											</div>
-											<div class="right">
-												<i></i>
-											</div>
-
-										</div>
-
-									</div>
-
-									<div class="page-content ">
-
-										<div class="list-block">
-											<!-- First group-->
-											<div class="list-group">
-												<ul>
-
-													<li class="item-content">
-														<div class="item-media">
-															<i class="icon  icon-asterisk"></i>
-														</div>
-														<div class="item-inner">
-															<div class="item-title">
-																QWD
-															</div>
-															<div class="item-after">
-																<span class="badge">5</span>
-															</div>
-														</div>
-													</li>
-													<li class="item-content">
-														<div class="item-media">
-															<i class="icon  icon-asterisk"></i>
-														</div>
-														<div class="item-inner">
-															<div class="item-title">
-																GPD
-															</div>
-															<div class="item-after">
-																<span class="badge">4</span>
-															</div>
-														</div>
-													</li>
-													<li class="item-content">
-														<div class="item-media">
-															<i class="icon  icon-asterisk"></i>
-														</div>
-														<div class="item-inner">
-															<div class="item-title">
-																HGS
-															</div>
-															<div class="item-after">
-																<span class="badge">4</span>
-															</div>
-														</div>
-													</li>
-													<li class="item-content">
-														<div class="item-media">
-															<i class="icon  icon-asterisk"></i>
-														</div>
-														<div class="item-inner">
-															<div class="item-title">
-																TPD
-															</div>
-															<div class="item-after">
-																<span class="badge">3</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
+	<!----------------------------->
+		
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<script type="text/javascript" src="cordova.js"></script>
 			<script type="text/javascript" src="scripts/platformOverrides.js"></script>
