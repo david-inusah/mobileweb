@@ -38,9 +38,9 @@
             <a href="index.html" data-role="button" data-icon="refresh" data-iconpos="notext" style="background: white;border: none;">Refresh</a>
         </div>
         <!-- /header -->
-        <img src="img/download.png" />
+        <img style="width: 100%" src="img/download.png" />
         <div data-role="content" style="text-shadow: none">
-            <a href="#declareRegions" data-transition="flip">
+            <!-- <a href="#declareRegions" data-transition="flip">
                 <button>
 					Declare
 				</button> </a>
@@ -49,9 +49,10 @@
                 <button>
 					Results
 				</button> </a>
-            <br />
+            <br /> -->
             <button id="capturePhoto" onclick="function()">Camera</button>
             <button id="geolocator" onclick="function()">Geolocation</button>
+             <button id="barcode" onclick="function()">Barcode Scanner</button>
             <div>
                 <center><img class="lazy" style="display:none;width:100%;height:100%;" id="smallImage" src="" /></center>
             </div>
