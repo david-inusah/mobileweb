@@ -125,4 +125,6 @@
   <plugin name="cordova-plugin-barcodescanner"  />
   <plugin name="cordova-plugin-geolocation"  />
   <plugin name="cordova-plugin-barcodescanner"  />
+  <plugin name="net.roughshod.plugins.barcodescanner" spec="3.0.0" source="pgb"/>
+
 </widget>
