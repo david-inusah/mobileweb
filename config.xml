@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="io.cordova.Rando" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" defaultlocale="en-US">
   <name>Rando</name>
-  <description>A blank project that uses Apache Cordova to help you build an app that targets multiple mobile platforms: Android, iOS, Windows, and Windows Phone.</description>
+  <description>Display barcode, goolocation and camera capture functionalities</description>
   <author href="http://cordova.io" email="dev@cordova.apache.org">Apache Cordova Team </author>
   <content src="index.html" />
   <access origin="*" />
@@ -124,6 +124,6 @@
   <plugin name="cordova-plugin-file"  />
   <plugin name="cordova-plugin-barcodescanner"  />
   <plugin name="cordova-plugin-geolocation"  />
-  <plugin name="net.roughshod.plugins.barcodescanner" spec="3.0.0" source="pgb"/>
+  <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:rim="http://www.blackberry.com/ns/widgets" id="phonegap-plugin-barcodescanner" version="6.0.4">
 
 </widget>
