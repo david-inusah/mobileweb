@@ -38,7 +38,7 @@
             <a href="index.html" data-role="button" data-icon="refresh" data-iconpos="notext" style="background: white;border: none;">Refresh</a>
         </div>
         <!-- /header -->
-        <img style="width: 100%" src="img/download.png" />
+        <img style="width: 100%;height: 300px" src="img/download.png" />
         <div data-role="content" style="text-shadow: none">
             <!-- <a href="#declareRegions" data-transition="flip">
                 <button>
@@ -56,15 +56,23 @@
             <div>
                 <center><img class="lazy" style="display:none;width:100%;height:100%;" id="smallImage" src="" /></center>
             </div>
-            <iframe src="http://maps.google.co.uk?&z=60&output=embed" height="200px" width="300px" frameborder="0" id="google-map"></iframe>
+             <div id="map" style="height: 300px;"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtu59Y2Fmdnww93Ju3qkdbJG0xgfcuGs4&callback=initMap"
+    async defer></script>
 
         </div>
         <!-- /content -->
     </div>
-    <!-- /page -->
-
-    <!----------------------------->
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
