@@ -59,12 +59,50 @@
              <div id="map" style="height: 300px;"></div>
     <script>
       var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+      var pos;
+       function initMap() {
+
+        var infoWindow;
+        var image = 'img/location.png';
+        // var pyrmont;
+
+        if (navigator.geolocation) {
+
+           function success(pos) {
+            var location = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: location,
+                zoom: 15
+            });
+
+            var text = "Your current location";
+
+            infoWindow = new google.maps.InfoWindow({
+                content: text
+            });
+
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                icon:image,
+            });
+
+            marker.addListener('click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
+    }
+
+    function fail(error) {
+        alert("Error finding your location.")
+    }
+
+    navigator.geolocation.getCurrentPosition(success, fail, {
+        maximumAge: 500000,
+        enableHighAccuracy: true,
+        timeout: 6000
+    });
+}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtu59Y2Fmdnww93Ju3qkdbJG0xgfcuGs4&callback=initMap"
     async defer></script>
